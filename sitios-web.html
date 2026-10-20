@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sitios web para aprender diseñoweb.">
+  <title>Sitios Web | 100% Web</title>
+      <style>
+        :root {
+            --ink: #19352f;
+            --paper: #f5f3ec;
+            --white: #fffefa;
+            --green: #285c4d;
+            --lime: #c9df85;
+            --coral: #d96c4f;
+            --muted: #65716b;
+            --line: #d9ded5;
+            --serif: Georgia, "Times New Roman", serif;
+            --sans: system-ui, -apple-system, "Segoe UI", sans-serif
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font: 16px/1.6 var(--sans)
+        }
+
+        a {
+            color: inherit
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid var(--coral);
+            outline-offset: 3px
+        }
+
+        .wrap {
+            width: min(1120px, calc(100% - 48px));
+            margin: auto
+        }
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px
+        }
+
+        .brand {
+            text-decoration: none;
+            font: 700 23px/1 var(--serif);
+            letter-spacing: 0
+        }
+
+        .brand span {
+            color: var(--coral)
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: safe center;
+            /* justify-content: flex-end; */
+            gap: clamp(14px, 3vw, 34px);
+            flex-wrap: wrap;
+
+            ul {
+                display: flex;
+                list-style-type: none;
+                gap: 1rem;
+
+                li{
+                    display: flex;
+
+                    &.active{
+                        color:var(--coral);
+                    }
+                }
+            }
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 650
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current=page] {
+            color: var(--green);
+            text-decoration: underline;
+            text-decoration-color: var(--coral);
+            text-underline-offset: 6px
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 22px;
+            background: var(--green);
+            color: white;
+            text-decoration: none;
+            font-weight: 750;
+            border: 0;
+            border-radius: 15px;
+        }
+
+        .button:hover {
+            background: var(--ink)
+        }
+
+        .button-light {
+            background: var(--lime);
+            color: var(--ink)
+        }
+
+        .button-light:hover {
+            background: #d8e8aa;
+            color: var(--ink)
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 1.08
+        }
+
+        h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: clamp(32px, 6vw, 76px);
+            font-weight: bold;
+            max-width: 760px;
+            margin-bottom: 20px
+        }
+
+        h2 {
+            font-size: clamp(30px, 4vw, 46px);
+            margin-bottom: 16px
+        }
+
+        h3 {
+            font-size: 25px;
+            margin-bottom: 10px
+        }
+
+        .lead {
+            max-width: 610px;
+            color: #e4e9df;
+            font-size: 18px
+        }
+
+        .section {
+            padding: 76px 0
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px
+        }
+
+        .section-heading h2 {
+            margin: 0
+        }
+
+        .text-link {
+            font-weight: 750;
+            text-decoration-color: var(--coral);
+            text-underline-offset: 5px
+        }
+
+        .hero {
+            min-height: 510px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #19352f;
+            color: white
+        }
+
+        .hero>img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%
+        }
+
+        .hero-shade {
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 39, 33, .66)
+        }
+
+        .hero-content {
+            position: relative;
+            padding: 82px 0;
+            max-width: 790px
+        }
+
+        .hero .eyebrow {
+            color: var(--lime)
+        }
+
+        .hero h1 {
+            max-width: 720px
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px
+        }
+
+        .hero-note {
+            position: absolute;
+            right: max(24px, calc((100vw - 1120px)/2));
+            bottom: 30px;
+            color: white;
+            font-size: 12px
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px
+        }
+
+        .card {
+            background: var(--white);
+            border-top: 3px solid var(--coral);
+            padding: 25px;
+            min-height: 215px
+        }
+
+        .card .meta {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .card p {
+            color: #53615a
+        }
+
+        .band {
+            background: var(--green);
+            color: white
+        }
+
+        .band .eyebrow {
+            color: var(--lime)
+        }
+
+        .band-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px
+        }
+
+        .band h2 {
+            max-width: 600px;
+            margin: 0
+        }
+
+        .site-footer {
+            background: #19352f;
+            color: #e7ece4;
+            padding: 28px 0
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap
+        }
+
+        .footer-inner p {
+            margin: 0;
+            font-size: 13px
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: #e7ece4
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            align-items: center
+        }
+
+        .split img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover
+        }
+
+        .page-intro {
+            padding: 66px 0 34px
+        }
+
+        .page-intro h1 {
+            font-size: clamp(42px, 5.5vw, 66px)
+        }
+
+        .page-intro p:last-child {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 18px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .field-wide {
+            grid-column: 1/-1
+        }
+
+        .field label {
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #aeb9af;
+            background: var(--white);
+            font: inherit;
+            color: var(--ink)
+        }
+
+        .field textarea {
+            min-height: 140px;
+            resize: vertical
+        }
+
+        .contact-details {
+            border-left: 1px solid var(--line);
+            padding-left: 34px
+        }
+
+        .contact-details a {
+            color: var(--green)
+        }
+
+        .course-row {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            gap: 24px;
+            align-items: center;
+            padding: 24px 0;
+            border-top: 1px solid var(--line);
+
+            p:last-of-type{
+              padding-bottom: 1rem;
+            }
+        }
+
+        .course-row:last-child {
+            border-bottom: 1px solid var(--line)
+        }
+
+        .course-number {
+            font: italic 30px var(--serif);
+            color: var(--coral)
+        }
+
+        .course-row p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .resource-list {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .resource-list li {
+            border-top: 1px solid var(--line);
+            padding: 22px 0
+        }
+
+        .resource-list li:last-child {
+            border-bottom: 1px solid var(--line)
+        }
+
+        .resource-list a {
+            font: 25px var(--serif);
+            text-decoration-color: var(--coral);
+            text-underline-offset: 5px
+        }
+
+        .resource-list p {
+            margin: 6px 0 0;
+            color: var(--muted)
+        }
+        
+        .web-links{
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 1rem;
+          }
+
+        @media(max-width:720px) {
+            .web-links{
+              justify-content: end;
+            }
+
+            .wrap {
+                width: min(100% - 32px, 560px)
+            }
+
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 18px 0
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+                gap: 10px 20px
+            }
+
+            .hero {
+                min-height: 540px
+            }
+
+            .hero-content {
+                padding: 64px 0 90px
+            }
+
+            .hero-note {
+                left: 16px;
+                right: auto;
+                bottom: 18px
+            }
+
+            .section {
+                padding: 54px 0
+            }
+
+            .cards {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                min-height: 0
+            }
+
+            .section-heading,
+            .band-inner {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+                gap: 26px
+            }
+
+            .split img {
+                height: 300px
+            }
+
+            .page-intro {
+                padding: 48px 0 24px
+            }
+
+            .course-row {
+                grid-template-columns: 54px 1fr;
+                gap: 8px 16px
+            }
+
+            .course-row .button {
+                grid-column: 2;
+                justify-self: start
+            }
+
+            .contact-details {
+                border-left: 0;
+                border-top: 1px solid var(--line);
+                padding: 24px 0 0
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field-wide {
+                grid-column: auto
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important
+            }
+        }
+
+        .web-links{
+          justify-content: end;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap nav">
+               <a class="brand" href="index.html">100%<span> web</span></a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <ul>
+                    <li>
+                        <a  href="index.html" target="_blank" rel="noopener noreferrer">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="sobre-nosotros.html" target="_blank" rel="noopener noreferrer">Sobre nosotros</a>
+                    </li>
+                    <li class="active">
+                        <a href="sitios-web.html" target="_blank" rel="noopener noreferrer">Sitios web</a>
+                    </li>
+                    <li>
+                        <a href="videos.html" target="_blank" rel="noopener noreferrer">Videos</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html" target="_blank" rel="noopener noreferrer">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+     <main>
+    <section class="page-intro">
+      <div class="wrap">
+        <p class="eyebrow">Small groups, useful skills</p>
+        <h1>Sitios web</h1>
+        <p>Un listado de webs útiles para aprender diseño web.</p></div></section>
+    <section class="section" style="padding-top:18px">
+      <div class="wrap">
+        <dt>MDN Web Docs (Mozilla)</dt>
+        <dd>Una web muy completa disponible en varios idiomas</dd>
+
+      <article class="course-row">
+        <div class="course-number">01</div>
+        <div>
+          <p class="eyebrow">Español, inglés, etc</p>
+          <h2>MDN Web Docs (Mozilla)</h2>
+          <p>Una web muy completa disponible en varios idiomas</p>
+          <ul class="web-links">
+            <li>
+              <a class="button" href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener noreferrer">HTML</a>
+            </li>
+            <li>
+              <a class="button" href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" rel="noopener noreferrer">CSS</a>
+            </li>
+            <li>
+              <a class="button" href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>
+            </li>
+          </ul>
+        </div>
+
+
+        </article>
+      <article class="course-row">
+        <div class="course-number">02</div>
+        <div>
+          <p class="eyebrow">Inglés</p>
+          <h2>CSS-Tricks</h2>
+          <p>Una de las mejores web para aprender CSS.</p>
+        </div>
+        <a class="button" href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer">CSS</a>
+        </article>
+      <article class="course-row">
+        <div class="course-number">03</div><div><p class="eyebrow">Inglés</p>
+          <h2>Stack overflow</h2>
+          <p>Solía ser la web de referencia para dudas de programación web hasta hace pocos años, antes que la gente usase cada vez más herramientas de IA generativa como Chat GPT.</p></div>
+          <a class="button" href="https://stackoverflow.com/questions" target="_blank" rel="noopener noreferrer">Consultas</a>
+      </article>
+      <article class="course-row">
+        <div class="course-number">04</div><div><p class="eyebrow">Inglés</p>
+          <h2>Smashing magazine</h2>
+          <p>Página muy interesante para el tema de UX/UI, buenas prácticas en diseño y programación web, etc. Tienen un boletín semanal.</p></div>
+          <a class="button" href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer">UX / UI</a>
+      </article>
+    </div>
+  </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><p>© 2026 100% Web Learning Studio</p><div class="footer-links"><a href="about.html">Our story</a><a href="links.html">Useful links</a><a href="contact.html">Get in touch</a></div></div></footer>
+</body>
+</html>

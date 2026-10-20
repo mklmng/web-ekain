@@ -1,18 +1,346 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Get in touch with Common Ground Learning Studio about courses, collaborations, or a visit."
+    />
+    <title>Contacto | | 100% Web</title>
+    <style>
+      :root {
+        --ink: #19352f;
+        --paper: #f5f3ec;
+        --white: #fffefa;
+        --green: #285c4d;
+        --lime: #c9df85;
+        --coral: #d96c4f;
+        --muted: #65716b;
+        --line: #d9ded5;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font: 16px/1.6 var(--sans);
+      }
+      a {
+        color: inherit;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid var(--coral);
+        outline-offset: 3px;
+      }
+      .wrap {
+        width: min(1120px, calc(100% - 48px));
+        margin: auto;
+      }
+      .site-header {
+        background: var(--white);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        text-decoration: none;
+        font: 700 23px/1 var(--serif);
+        letter-spacing: 0;
+      }
+      .brand span {
+        color: var(--coral);
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: clamp(14px, 3vw, 34px);
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 650;
+      }
+      .nav-links a:hover,
+      .nav-links a[aria-current="page"] {
+        color: var(--green);
+        text-decoration: underline;
+        text-decoration-color: var(--coral);
+        text-underline-offset: 6px;
+      }
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 22px;
+        background: var(--green);
+        color: white;
+        text-decoration: none;
+        font-weight: 750;
+        border: 0;
+        cursor: pointer;
+      }
+      .button:hover {
+        background: var(--ink);
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1.08;
+      }
+      h1 {
+        font-size: clamp(42px, 6vw, 76px);
+        max-width: 760px;
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: clamp(30px, 4vw, 46px);
+        margin-bottom: 16px;
+      }
+      .section {
+        padding: 76px 0;
+      }
+      .page-intro {
+        padding: 66px 0 34px;
+      }
+      .page-intro h1 {
+        font-size: clamp(42px, 5.5vw, 66px);
+      }
+      .page-intro p:last-child {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+      .contact-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+        gap: 56px;
+        align-items: start;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .field-wide {
+        grid-column: 1/-1;
+      }
+      .field label {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .field input,
+      .field textarea {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #aeb9af;
+        background: var(--white);
+        font: inherit;
+        color: var(--ink);
+      }
+      .field textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+      .contact-details {
+        border-left: 1px solid var(--line);
+        padding-left: 34px;
+      }
+      .contact-details a {
+        color: var(--green);
+      }
+      .site-footer {
+        background: #19352f;
+        color: #e7ece4;
+        padding: 28px 0;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .footer-inner p {
+        margin: 0;
+        font-size: 13px;
+      }
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        font-size: 13px;
+        color: #e7ece4;
+      }
+      @media (max-width: 720px) {
+        .wrap {
+          width: min(100% - 32px, 560px);
+        }
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 18px 0;
+        }
+        .nav-links {
+          justify-content: flex-start;
+          gap: 10px 20px;
+        }
+        .section {
+          padding: 54px 0;
+        }
+        .page-intro {
+          padding: 48px 0 24px;
+        }
+        .contact-layout {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .field-wide {
+          grid-column: auto;
+        }
+        .contact-details {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+          padding: 24px 0 0;
+        }
+      }
+    </style>
   </head>
   <body>
-    <form action="" method="post">
-      <fieldset>
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" required />
-        <textarea name="mensaje" id="mensaje"></textarea>
-        <button type="submit">Enviar</button>
-      </fieldset>
-    </form>
+    <header class="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="index.html">common<span>/</span>ground</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a><a href="about.html">About us</a
+          ><a href="courses.html">Courses</a><a href="links.html">Links</a
+          ><a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-intro">
+        <div class="wrap">
+          <p class="eyebrow">We’d love to hear from you</p>
+          <h1>Let’s start a conversation.</h1>
+          <p>
+            Questions about a class, an idea for a workshop, or just want to see
+            the studio? Send us a note.
+          </p>
+        </div>
+      </section>
+      <section class="section" style="padding-top: 18px">
+        <div class="wrap contact-layout">
+          <form
+            action="mailto:hello@commonground.example"
+            method="post"
+            enctype="text/plain"
+          >
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Nombre</label
+                ><input id="nombre" name="nombre" autocomplete="nombre" required />
+              </div>
+              <div class="field">
+              <div class="field">
+                <label for="name">Apellido</label
+                ><input id="apellido" name="apellido" autocomplete="apellido" required />
+              </div>
+              </div>
+              <div class="field">
+                <label for="email">Email address</label
+                ><input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="field field-wide">
+                <label for="subject">Cuál es su consulta?</label
+                >
+                
+                <input id="subject" name="subject" required />
+              </div>
+              <div class="field field-wide">
+                <label for="message">Tu mensaje</label
+                ><textarea id="message" name="message" required></textarea>
+              </div>
+              <div class="field-wide">
+                <button class="button" type="submit">Escríbenos</button>
+              </div>
+            </div>
+          </form>
+          <aside class="contact-details">
+            <p class="eyebrow">Find us</p>
+            <h2>Come by the studio.</h2>
+            <p>
+              Common Ground Learning Studio<br />18 Market Street<br />Your
+              town, ST 00000
+            </p>
+            <p>
+              <a href="mailto:hello@commonground.example"
+                >hello@commonground.example</a
+              >
+            </p>
+            <p>
+              Workshop hours vary by course. Write ahead and we’ll help you plan
+              a visit.
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p>© 2026 Common Ground Learning Studio</p>
+        <div class="footer-links">
+          <a href="about.html">Our story</a><a href="courses.html">Courses</a
+          ><a href="links.html">Useful links</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
